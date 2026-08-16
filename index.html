@@ -3,80 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АвтоСкан - NFC система для автосервиса</title>
+    <title>АвтоСкан - NFC система</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
+    <!-- CSS только здесь -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     
-    <!-- ===== ГЛАВНАЯ КАРТОЧКА ===== -->
+    <!-- ===== ВЕСЬ HTML КОНТЕНТ ===== -->
     <div class="card">
-        
-        <!-- Логотип -->
-        <div class="logo">
-            <div class="logo-icon">🚗</div>
-            <div class="logo-text"><span>АвтоСкан</span></div>
-        </div>
-        
-        <p class="subtitle">NFC система для автосервиса</p>
-        <div class="divider"></div>
-        <p class="title">Управление клиентами по NFC-меткам</p>
-        <p class="description">
-            Сканируйте NFC-метку и мгновенно получайте информацию<br>
-            об автомобиле клиента
-        </p>
-        
-        <!-- Кнопка входа -->
-        <button class="btn-admin" onclick="openLoginModal()">
-            🔐 Войти в панель администратора
-        </button>
-        
-        <!-- Дополнительная информация -->
-        <div class="nfc-info">
-            <span class="nfc-info-item">
-                <span class="icon">📱</span> Поднесите телефон к метке
-            </span>
-            <span class="nfc-info-item">
-                <span class="icon">⚡</span> Мгновенный доступ
-            </span>
-            <span class="nfc-info-item">
-                <span class="icon">🔒</span> Безопасно
-            </span>
-        </div>
+        <!-- ... ваш HTML ... -->
     </div>
     
-    <!-- ===== МОДАЛЬНОЕ ОКНО ВХОДА ===== -->
     <div class="modal-overlay" id="loginModal">
-        <div class="modal">
-            
-            <button class="modal-close" onclick="closeLoginModal()">×</button>
-            
-            <h2>🔐 Вход в админ-панель</h2>
-            <p class="modal-sub">Введите данные администратора для доступа</p>
-            
-            <label>Email</label>
-            <input type="email" id="adminEmail" placeholder="admin@autosystem.com" value="admin@autosystem.com">
-            
-            <label>Пароль</label>
-            <input type="password" id="adminPassword" placeholder="Введите пароль">
-            
-            <button class="btn-save" onclick="loginAdmin()">Войти в панель</button>
-            
-            <div class="error-msg" id="loginError">❌ Неверный email или пароль</div>
-        </div>
+        <!-- ... модалка ... -->
     </div>
     
-    <!-- ===== JS ===== -->
+    <!-- ===== ВСЕ СКРИПТЫ ЗДЕСЬ (в конце body) ===== -->
+    
+    <!-- 1. СНАЧАЛА Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <!-- 2. ПОТОМ ваш firebase-config.js -->
     <script src="js/firebase-config.js"></script>
+    
+    <!-- 3. ПОТОМ main.js -->
     <script src="js/main.js"></script>
 </body>
 </html>
