@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | АвтоСкан</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body class="admin-body">
+    
+    <!-- ===== ШАПКА ===== -->
+    <header class="header">
+        <div class="header-left">
+            <span class="logo">🚗</span>
+            <h1>АвтоСкан <span>· Админ-панель</span></h1>
+        </div>
+        <div class="header-right">
+            <span class="admin-email" id="adminEmailDisplay">admin@autosystem.com</span>
+            <button class="btn-logout" onclick="logoutAdmin()">Выйти</button>
+        </div>
+    </header>
+    
+    <!-- ===== КОНТЕНТ ===== -->
+    <div class="container">
+        
+        <!-- Статистика -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number" id="totalClients">0</div>
+                <div class="label">Всего клиентов</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="totalTags">0</div>
+                <div class="label">Активных меток</div>
+            </div>
+        </div>
+        
+        <!-- Список клиентов -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>📋 Список клиентов <span class="count" id="clientsCount"></span></h2>
+                <button class="btn-add" onclick="openAddModal()">+ Добавить клиента</button>
+            </div>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Метка (UID)</th>
+                            <th>Клиент</th>
+                            <th>Модель авто</th>
+                            <th>Телефон</th>
+                            <th style="text-align:center">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clientsTableBody">
+                        <tr><td colspan="5" class="empty">Загрузка...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== МОДАЛЬНОЕ ОКНО ДОБАВЛЕНИЯ ===== -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeAddModal()">×</button>
+            <h2>➕ Добавить клиента</h2>
+            <p class="modal-sub">Введите данные клиента и UID NFC-метки</p>
+            
+            <label>UID NFC-метки (ID документа)</label>
+            <input type="text" id="inputTagId" placeholder="Например: TAG_123456789">
+            
+            <label>Имя клиента</label>
+            <input type="text" id="inputName" placeholder="Иван Петров">
+            
+            <label>Модель автомобиля</label>
+            <input type="text" id="inputCarModel" placeholder="Toyota Camry">
+            
+            <label>Телефон</label>
+            <input type="text" id="inputPhone" placeholder="+7 999 123-45-67">
+            
+            <button class="btn-save" onclick="addClient()">Сохранить</button>
+            <div class="error-msg" id="addError">❌ Ошибка</div>
+        </div>
+    </div>
+    
+    <!-- ===== JS ===== -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
