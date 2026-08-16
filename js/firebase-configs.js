@@ -9,6 +9,6 @@ const firebaseConfig = {
 
 firebaseConfig.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const auth = firebase.auth;
+const auth = firebase.auth();
 
 const ADMIN_EMAIL = 'az99arseniy@gmail.com';
